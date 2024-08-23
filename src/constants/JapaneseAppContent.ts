@@ -21,6 +21,7 @@ export default class JapaneseAppContent implements AppContent {
     CREATE_ACTIVITY_END_TASK_REPORT: string;
     CREATE_ACTIVITY_PROGRESS_REPORT: string;
     CREATE_ACTIVITY_ERROR_REPORT: string;
+    CREATE_ACTIVITY_REMINDER: string;
     TASK: string;
     DISCUSSION: string;
     POLL: string;
@@ -28,6 +29,11 @@ export default class JapaneseAppContent implements AppContent {
     PROGRESS_REPORT: string;
     ERROR_REPORT: string;
     PIN: string;
+    REMINDER: string;
+    STORAGE: string;
+    ANALYSIS: string;
+    STOP: string;
+    QR: string;
 
     constructor() {
         this.TYPE = AppContentType.JA;
@@ -57,5 +63,11 @@ export default class JapaneseAppContent implements AppContent {
         this.ERROR_REPORT = "バグレポート";
         this.PROGRESS_REPORT = "作業の進捗状況を報告";
         this.PIN = "ピン 📌";
+        this.CREATE_ACTIVITY_REMINDER = "やあ、仕事！仕事！👀";
+        this.REMINDER = "リマインダー";
+        this.STORAGE = "プロジェクト内の画像、ビデオ、ファイル 📁";
+        this.ANALYSIS = "プロジェクトを分析する 📈";
+        this.STOP = "プロジェクトを停止します🚫";
+        this.QR = "ＱＲコード";
     }
 }

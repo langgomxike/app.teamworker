@@ -9,3 +9,8 @@ export type ProjectDetailScreenType = {
 export type CreateScreenType = {
     id: number;
 }
+
+export type ActivityScreenType = {
+    id: number;
+    type: number,
+}

@@ -21,6 +21,7 @@ export default class EnglishAppContent implements AppContent {
     CREATE_ACTIVITY_END_TASK_REPORT: string;
     CREATE_ACTIVITY_PROGRESS_REPORT: string;
     CREATE_ACTIVITY_ERROR_REPORT: string;
+    CREATE_ACTIVITY_REMINDER: string;
     TASK: string;
     DISCUSSION: string;
     POLL: string;
@@ -28,6 +29,11 @@ export default class EnglishAppContent implements AppContent {
     PROGRESS_REPORT: string;
     ERROR_REPORT: string;
     PIN: string;
+    REMINDER: string;
+    STORAGE: string;
+    ANALYSIS: string;
+    STOP: string;
+    QR: string;
 
     constructor() {
         this.TYPE = AppContentType.EN;
@@ -57,5 +63,11 @@ export default class EnglishAppContent implements AppContent {
         this.ERROR_REPORT = "Error Report";
         this.PROGRESS_REPORT = "Progress Report";
         this.PIN = "Pined 📌";
+        this.CREATE_ACTIVITY_REMINDER = "Hey bro! work! work! 👀";
+        this.REMINDER = "Reminder";
+        this.STORAGE = "Images, videos, files in project 📁";
+        this.ANALYSIS = "Analyze project 📈";
+        this.STOP = "Stop project 🚫";
+        this.QR = "QR code";
     }
 }

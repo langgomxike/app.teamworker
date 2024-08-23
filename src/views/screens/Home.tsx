@@ -21,6 +21,7 @@ import Activity from "../../models/Activity";
 import Context from "../../constants/Context";
 import { NavigationContext } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
+import ShadowCornerBox from "../components/ShadowCornerBox";
 
 enum Tab {
   MINE,
@@ -210,30 +211,32 @@ export default function HomeScreen() {
             keyExtractor={(item) => item.id + ""}
           />
         </SubCornerContainer>
+      </View>
 
-        {/* input id modal */}
-        <Modal
-          visible={showProjectFindModal}
-          animationType="slide"
-          transparent={true}
-        >
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <View style={styles.modal}>
+      {/* input id modal */}
+      <Modal
+        visible={showProjectFindModal}
+        animationType="slide"
+        transparent={true}
+      >
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <View style={[styles.modal]}>
+            <ShadowCornerBox onPress={() => {}}>
               {/* close button */}
               <ImageButton
                 src={inputButtons.close}
-                style={{}}
+                style={{ alignSelf: "flex-end", margin: 5, }}
                 onPress={() => setShowProjectFindModal(false)}
               />
 
               {/* input id*/}
-              <Text>Project's ID</Text>
-              <View style={[styles.inputContainer]}>
+              <View style={[styles.inputContainer, styles.modalInputContainer]}>
+                <Text style={{ alignSelf: "center" }}>Project's ID</Text>
                 <TextInput
                   inputMode="numeric"
                   value={projectId}
                   onChangeText={setProjectId}
-                  style={styles.input}
+                  style={[styles.input, styles.modalInput]}
                 />
                 <Pressable
                   onPress={() => setProjectId("")}
@@ -247,14 +250,14 @@ export default function HomeScreen() {
               </View>
 
               {/* input pass */}
-              <Text>Private password</Text>
-              <View style={[styles.inputContainer]}>
+              <View style={[styles.inputContainer, styles.modalInputContainer]}>
+                <Text style={{ alignSelf: "center" }}>Private password</Text>
                 <TextInput
                   inputMode="numeric"
                   maxLength={6}
                   value={privatePassword}
                   onChangeText={setPrivatePassword}
-                  style={styles.input}
+                  style={[styles.input, styles.modalInput]}
                 />
                 <Pressable
                   onPress={() => setPrivatePassword("")}
@@ -270,13 +273,13 @@ export default function HomeScreen() {
               {/* submit button */}
               <ImageButton
                 src={require("../../../assets/icons/send_request.png")}
-                style={{ alignSelf: "center" }}
+                style={{ alignSelf: "center", marginTop: 20 }}
                 onPress={handleSubmitJoinProjectRequest}
               />
-            </View>
+            </ShadowCornerBox>
           </View>
-        </Modal>
-      </View>
+        </View>
+      </Modal>
     </RootLayout>
   );
 }
@@ -341,20 +344,20 @@ const styles = StyleSheet.create({
   },
 
   modal: {
-    backgroundColor: "#EEE",
-    padding: 10,
-    width: 300,
-    height: 300,
     alignSelf: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+  },
+
+  modalInputContainer: {
+    flex: 0,
+    width: 300,
     gap: 10,
+    marginVertical: 3,
+  },
+
+  modalInput: {
+    backgroundColor: "#EEE",
+    textAlign: "right",
+    padding: 5,
     borderRadius: 10,
   },
 });

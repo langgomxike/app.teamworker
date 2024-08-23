@@ -36,17 +36,22 @@ export default function CreateScreen() {
       onPress: () => goToSubCreateScreen(ScreenName.CREATE_DISCUSSION),
     },
     {
-      activity: new Activity(4, appContentContext.content.ERROR_REPORT, 3),
+      activity: new Activity(4, appContentContext.content.REMINDER, 3),
       type: ActivityType.ERROR_REPORT,
+      onPress: () => goToSubCreateScreen(ScreenName.CREATE_REMINDER),
+    },
+    {
+      activity: new Activity(5, appContentContext.content.ERROR_REPORT, 4),
+      type: ActivityType.PROGRESS_REPORT,
       onPress: () => goToSubCreateScreen(ScreenName.CREATE_ERROR_REPORT),
     },
     {
-      activity: new Activity(5, appContentContext.content.PROGRESS_REPORT, 4),
-      type: ActivityType.PROGRESS_REPORT,
+      activity: new Activity(6, appContentContext.content.PROGRESS_REPORT, 5),
+      type: ActivityType.END_TASK_REPORT,
       onPress: () => goToSubCreateScreen(ScreenName.CREATE_PROGRESS_REPORT),
     },
     {
-      activity: new Activity(6, appContentContext.content.END_TASK_REPORT, 5),
+      activity: new Activity(7, appContentContext.content.END_TASK_REPORT, 6),
       type: ActivityType.END_TASK_REPORT,
       onPress: () => goToSubCreateScreen(ScreenName.CREATE_END_TASK_REPORT),
     },

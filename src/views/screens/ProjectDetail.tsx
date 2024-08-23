@@ -1,5 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import StackWithAccountLayout from "../layouts/StackWithAccountLayout";
+import { Image, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
   NavigationContext,
@@ -7,25 +6,28 @@ import {
 } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
 import Project from "../../models/Project";
-import {
-  ProjectDetailScreenType,
-  ProjectScreenType,
-} from "../../constants/NavigationType";
+import { ProjectDetailScreenType } from "../../constants/NavigationType";
 import StackLayout from "../layouts/StackLayout";
 import SubCornerContainer from "../components/SubCornerContainer";
 import Color from "./../../constants/Color";
+import Context from "../../constants/Context";
+import ShadowCornerBox from "../components/ShadowCornerBox";
+import QRCode from "react-native-qrcode-svg";
+import ImageButton from "../components/ImageButton";
 
 export default function ProjectDetailScreen() {
   //refs, contexts
   const navigation = useContext(NavigationContext);
   const route = useContext(NavigationRouteContext);
+  const appContentContext = useContext(Context.AppContentContext);
 
   //states
   const [project, setProject] = useState<Project>(new Project());
+  const [showQR, setShowQR] = useState<boolean>(false);
 
   //handlers
   const getProject = useCallback((id: number) => {
-    alert(id);
+    // alert(id);
 
     const p = new Project(
       id,
@@ -37,6 +39,20 @@ export default function ProjectDetailScreen() {
     );
 
     setProject(p);
+  }, []);
+
+  const goToStorageScreen = useCallback(() => {
+    const data = {};
+    navigation?.navigate(ScreenName.STORAGE, data);
+  }, []);
+
+  const goToAnalysisScreen = useCallback(() => {
+    const data = {};
+    navigation?.navigate(ScreenName.ANALYSIS, data);
+  }, []);
+
+  const handleStopProject = useCallback(() => {
+    alert("stop project");
   }, []);
 
   //effects
@@ -57,7 +73,87 @@ export default function ProjectDetailScreen() {
       </View>
 
       {/* content */}
-      <SubCornerContainer></SubCornerContainer>
+      <SubCornerContainer>
+        {/* items */}
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* qr code */}
+          <ShadowCornerBox onPress={() => setShowQR(true)}>
+            <View style={styles.item}>
+              <Image
+                style={styles.itemImage}
+                source={require("../../../assets/icons/qr.png")}
+              />
+              <Text style={styles.itemText}>
+                {appContentContext.content.QR}
+              </Text>
+            </View>
+          </ShadowCornerBox>
+
+          {/* storage */}
+          <ShadowCornerBox onPress={goToStorageScreen}>
+            <View style={styles.item}>
+              <Image
+                style={styles.itemImage}
+                source={require("../../../assets/icons/storage.png")}
+              />
+              <Text style={styles.itemText}>
+                {appContentContext.content.STORAGE}
+              </Text>
+            </View>
+          </ShadowCornerBox>
+
+          {/* analysis */}
+          <ShadowCornerBox onPress={goToAnalysisScreen}>
+            <View style={styles.item}>
+              <Image
+                style={styles.itemImage}
+                source={require("../../../assets/icons/analysis.png")}
+              />
+              <Text style={styles.itemText}>
+                {appContentContext.content.ANALYSIS}
+              </Text>
+            </View>
+          </ShadowCornerBox>
+
+          {/* stop project */}
+          <ShadowCornerBox onPress={handleStopProject}>
+            <View style={styles.item}>
+              <Image
+                style={styles.itemImage}
+                source={require("../../../assets/icons/stop.png")}
+              />
+              <Text style={styles.itemText}>
+                {appContentContext.content.STOP}
+              </Text>
+            </View>
+          </ShadowCornerBox>
+        </ScrollView>
+      </SubCornerContainer>
+
+      {/* qr modal */}
+      <Modal transparent={true} visible={showQR} animationType="slide">
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <View style={styles.qrModel}>
+            <ShadowCornerBox onPress={() => {}}>
+              <ImageButton
+                src={require("../../../assets/icons/close.png")}
+                onPress={() => setShowQR(false)}
+                style={{ alignSelf: "flex-end" }}
+              />
+              <QRCode
+                value={JSON.stringify({
+                  project_id: project.id,
+                  password: project.name,
+                })}
+                size={300}
+              />
+            </ShadowCornerBox>
+          </View>
+        </View>
+      </Modal>
     </StackLayout>
   );
 }
@@ -87,5 +183,25 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Color.LIGHT_TEXT,
     fontSize: 12,
+  },
+
+  item: {
+    flexDirection: "row",
+    gap: 10,
+  },
+
+  itemImage: {
+    width: 40,
+    height: 40,
+  },
+
+  itemText: {
+    flex: 1,
+    alignSelf: "center",
+  },
+
+  qrModel: {
+    alignSelf: "center",
+    padding: 30,
   },
 });

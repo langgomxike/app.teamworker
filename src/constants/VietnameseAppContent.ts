@@ -21,6 +21,7 @@ export default class VietnameseAppContent implements AppContent {
     CREATE_ACTIVITY_END_TASK_REPORT: string;
     CREATE_ACTIVITY_PROGRESS_REPORT: string;
     CREATE_ACTIVITY_ERROR_REPORT: string;
+    CREATE_ACTIVITY_REMINDER: string;
     TASK: string;
     DISCUSSION: string;
     POLL: string;
@@ -28,6 +29,11 @@ export default class VietnameseAppContent implements AppContent {
     PROGRESS_REPORT: string;
     ERROR_REPORT: string;
     PIN: string;
+    REMINDER: string;
+    STORAGE: string;
+    ANALYSIS: string;
+    STOP: string;
+    QR: string;
 
     constructor() {
         this.TYPE = AppContentType.VN;
@@ -57,6 +63,12 @@ export default class VietnameseAppContent implements AppContent {
         this.ERROR_REPORT = "Báo cáo lỗi";
         this.PROGRESS_REPORT = "Báo cáo tiến trình làm việc";
         this.PIN = "Đã ghim 📌";
+        this.CREATE_ACTIVITY_REMINDER = "Làm bài đi bạn ơi 👀";
+        this.REMINDER = "Nhắc nhở";
+        this.STORAGE = "Ảnh, video, file trong dự án 📁";
+        this.ANALYSIS = "Phân tích dự án 📈";
+        this.STOP = "Dừng dự án 🚫";
+        this.QR = "Mã QR";
     }
 
 }

@@ -8,6 +8,7 @@ import {
 import ScreenName from "../../constants/ScreenName";
 import Project from "../../models/Project";
 import {
+  ActivityScreenType,
   CreateScreenType,
   ProjectDetailScreenType,
   ProjectScreenType,
@@ -19,6 +20,16 @@ import Color from "./../../constants/Color";
 import AppConfig from "../../constants/AppConfig";
 import Context from "../../constants/Context";
 import Toast from "react-native-simple-toast";
+
+const activityScreens = [
+  ScreenName.POLL_DETAIL,
+  ScreenName.TASK_DETAIL,
+  ScreenName.DISCUSSION_DETAIL,
+  ScreenName.REMINDER_DETAIL,
+  ScreenName.ERROR_REPORT_DETAIL,
+  ScreenName.PROGRESS_REPORT_DETAIL,
+  ScreenName.END_TASK_REPORT_DETAIL,
+];
 
 export default function ProjectScreen() {
   //refs, contexts
@@ -47,7 +58,13 @@ export default function ProjectScreen() {
     navigation?.navigate(ScreenName.CREATE, data);
   }, [project]);
 
-  const goToActivityScreen = useCallback(() => {}, []);
+  const goToActivityScreen = useCallback((id: number, type: number) => {
+    const data: ActivityScreenType = {
+      id: id,
+      type: type,
+    };
+    navigation?.navigate(activityScreens[type], data);
+  }, []);
 
   const getActivitiesInProject = useCallback((id: number) => {
     const p = new Project(
@@ -62,7 +79,7 @@ export default function ProjectScreen() {
     const as = [];
 
     for (let i = 1; i <= 10; i++) {
-      const type = Math.floor(Math.random() * 6);
+      const type = Math.floor(Math.random() * 7);
       const a = new Activity(i, "Activity " + i, type);
       as.push(a);
     }
@@ -126,7 +143,7 @@ export default function ProjectScreen() {
           <View style={styles.item}>
             <ActivityItem
               activity={item}
-              onPress={goToActivityScreen}
+              onPress={() => goToActivityScreen(item.id, item.type)}
               onLongPress={handlePinActivity}
             />
             <Text style={styles.time}>
