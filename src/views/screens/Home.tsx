@@ -19,6 +19,8 @@ import Project from "../../models/Project";
 import ProjectItem from "../components/ProjectItem";
 import Activity from "../../models/Activity";
 import Context from "../../constants/Context";
+import { NavigationContext } from "@react-navigation/native";
+import ScreenName from "../../constants/ScreenName";
 
 enum Tab {
   MINE,
@@ -33,6 +35,7 @@ const inputButtons = {
 export default function HomeScreen() {
   //refs, contexts
   const appContentContext = useContext(Context.AppContentContext);
+  const navigation = useContext(NavigationContext);
 
   //states
   const [currentTab, setCurrentTab] = useState<Tab>(Tab.MINE);
@@ -49,9 +52,7 @@ export default function HomeScreen() {
     alert("Scanner opened");
   }, []);
 
-  const goToCreateScreen = useCallback(() => {
-    alert("Go to Create Screen");
-  }, []);
+  const goToCreateScreen = useCallback(() => {}, []);
 
   const handleSubmitJoinProjectRequest = useCallback(() => {
     if (
@@ -123,7 +124,7 @@ export default function HomeScreen() {
           </View>
 
           {/* float account */}
-          <FloatAccount role="(leader)" />
+          <FloatAccount />
         </View>
 
         {/* actions */}

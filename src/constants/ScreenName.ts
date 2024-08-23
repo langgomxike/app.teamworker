@@ -1,4 +1,13 @@
 export default class ScreenName {
-    static HOME = "home";
-    static ACCOUNT = "account";
+    static HOME = "HOME";
+    static ACCOUNT = "ACCOUNT";
+    static PROJECT = "PROJECT";
+    static PROJECT_DETAIL = "PROJECT_DETAIL";
+    static CREATE = "CREATE";
+    static CREATE_POLL = "CREATE_POLL";
+    static CREATE_DISCUSSION = "CREATE_DISCUSSION";
+    static CREATE_TASK = "CREATE_TASK";
+    static CREATE_ERROR_REPORT = "CREATE_ERROR_REPORT";
+    static CREATE_PROGRESS_REPORT = "CREATE_PROGRESS_REPORT";
+    static CREATE_END_TASK_REPORT = "CREATE_END_TASK_REPORT";
 }

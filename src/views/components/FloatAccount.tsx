@@ -4,7 +4,7 @@ import { useCallback, useContext } from "react";
 import { NavigationContext } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
 
-export default function FloatAccount({ role = "" }: { role: string }) {
+export default function FloatAccount() {
   //refs, contexts
   const navigation = useContext(NavigationContext);
 
@@ -14,9 +14,9 @@ export default function FloatAccount({ role = "" }: { role: string }) {
   }, []);
   return (
     <Pressable onPress={goToAccountScreen} style={styles.container}>
-      <View>
+      <View style={{ alignSelf: "center" }}>
         <Text style={styles.name}>John Smith</Text>
-        <Text style={styles.role}>{role}</Text>
+        <Text style={styles.email}>{"jonh@gmail.com"}</Text>
       </View>
       <Image
         style={styles.avatar}
@@ -37,11 +37,13 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "500",
     color: "#FFF",
+    alignSelf: "flex-end",
   },
 
-  role: {
+  email: {
     fontSize: 12,
     color: "#FFF",
+    alignSelf: "flex-end",
   },
 
   avatar: {

@@ -1,9 +1,12 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import Project from "../../models/Project";
 import Color from "../../constants/Color";
 import { useCallback, useContext, useEffect, useState } from "react";
 import AppConfig from "../../constants/AppConfig";
 import Context from "../../constants/Context";
+import { NavigationContext } from "@react-navigation/native";
+import ScreenName from "../../constants/ScreenName";
+import { ProjectScreenType } from "../../constants/NavigationType";
 
 export default function ProjectItem({
   project = new Project(),
@@ -12,9 +15,18 @@ export default function ProjectItem({
 }) {
   //refs, contexts
   const appContentContext = useContext(Context.AppContentContext);
+  const navigation = useContext(NavigationContext);
+
+  //handlers
+  const goToProjectScreen = useCallback(() => {
+    const data: ProjectScreenType = {
+      id: project.id,
+    };
+    navigation?.navigate(ScreenName.PROJECT, data);
+  }, []);
 
   return (
-    <View style={styles.container}>
+    <Pressable onPress={goToProjectScreen} style={styles.container}>
       <Image style={styles.cover} src={project.coverImage} />
 
       <View style={styles.textGroup}>
@@ -22,7 +34,7 @@ export default function ProjectItem({
         <Text style={styles.activity}>
           {project.activities.length > 0
             ? project.activities[0].name
-            : "This project has no activities"}
+            : appContentContext.content.NO_ACTIVITY}
         </Text>
       </View>
 
@@ -35,7 +47,7 @@ export default function ProjectItem({
           {AppConfig.getDate(project.activities[0]?.createdTime, true)}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

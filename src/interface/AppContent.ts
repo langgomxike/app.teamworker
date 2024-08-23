@@ -19,4 +19,19 @@ export default interface AppContent {
     HOUR: string;
     MINUTE: string;
     JUST_RECENT: string;
+    NO_ACTIVITY: string;
+    CREATE_ACTIVITY: string;
+    CREATE_ACTIVITY_TASK: string;
+    CREATE_ACTIVITY_DISCUSSION: string;
+    CREATE_ACTIVITY_POLL: string;
+    CREATE_ACTIVITY_END_TASK_REPORT: string;
+    CREATE_ACTIVITY_PROGRESS_REPORT: string;
+    CREATE_ACTIVITY_ERROR_REPORT: string;
+    TASK: string;
+    DISCUSSION: string;
+    POLL: string;
+    END_TASK_REPORT: string;
+    PROGRESS_REPORT: string;
+    ERROR_REPORT: string;
+    PIN: string;
 }
