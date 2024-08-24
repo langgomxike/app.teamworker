@@ -1,5 +1,6 @@
 import { ImageURISource } from 'react-native';
 import AppContent, { AppContentType } from '../interface/AppContent';
+import AppConfig from './AppConfig';
 export default class VietnameseAppContent implements AppContent {
     SEARCH: string;
     MIME_TAB: string;
@@ -34,6 +35,8 @@ export default class VietnameseAppContent implements AppContent {
     ANALYSIS: string;
     STOP: string;
     QR: string;
+    CAMERA_REQUEST: string;
+    LOADING:string;
 
     constructor() {
         this.TYPE = AppContentType.VN;
@@ -69,6 +72,8 @@ export default class VietnameseAppContent implements AppContent {
         this.ANALYSIS = "Phân tích dự án 📈";
         this.STOP = "Dừng dự án 🚫";
         this.QR = "Mã QR";
+        this.CAMERA_REQUEST = AppConfig.APP_NAME + " cần quyền truy cập vào máy ảnh";
+        this.LOADING = "Đang tải...";
     }
 
 }

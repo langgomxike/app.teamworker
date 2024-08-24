@@ -4,6 +4,7 @@ export default class Project {
     id: number;
     name: string;
     description: string;
+    password: string;
     coverImage: string;
     activities: Array<Activity>;
 
@@ -13,6 +14,7 @@ export default class Project {
         this.description = description;
         this.coverImage = coverImage;
         this.activities = [];
+        this.password = "";
     }
 
     //method

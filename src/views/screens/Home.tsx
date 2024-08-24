@@ -50,10 +50,12 @@ export default function HomeScreen() {
 
   //handlers
   const openScanner = useCallback(() => {
-    alert("Scanner opened");
+    navigation?.navigate(ScreenName.QR_SCANNER);
   }, []);
 
-  const goToCreateScreen = useCallback(() => {}, []);
+  const goToCreateScreen = useCallback(() => {
+    navigation?.navigate(ScreenName.CREATE_PROJECT);
+  }, []);
 
   const handleSubmitJoinProjectRequest = useCallback(() => {
     if (
@@ -219,14 +221,19 @@ export default function HomeScreen() {
         animationType="slide"
         transparent={true}
       >
-        <View style={{ flex: 1, justifyContent: "center" }}>
+        <View style={styles.modalContainer}>
           <View style={[styles.modal]}>
             <ShadowCornerBox onPress={() => {}}>
               {/* close button */}
               <ImageButton
                 src={inputButtons.close}
-                style={{ alignSelf: "flex-end", margin: 5, }}
+                style={{ alignSelf: "flex-end", margin: 5 }}
                 onPress={() => setShowProjectFindModal(false)}
+              />
+
+              <Image
+                style={{ alignSelf: "center", marginBottom: 40, marginTop: 10 }}
+                source={require("../../../assets/icons/send_request.png")}
               />
 
               {/* input id*/}
@@ -271,11 +278,15 @@ export default function HomeScreen() {
               </View>
 
               {/* submit button */}
-              <ImageButton
-                src={require("../../../assets/icons/send_request.png")}
-                style={{ alignSelf: "center", marginTop: 20 }}
+              <Pressable
+                style={styles.scanButton}
                 onPress={handleSubmitJoinProjectRequest}
-              />
+              >
+                <Image
+                  style={styles.scanButtonImage}
+                  source={require("../../../assets/icons/send.png")}
+                />
+              </Pressable>
             </ShadowCornerBox>
           </View>
         </View>
@@ -343,6 +354,12 @@ const styles = StyleSheet.create({
     borderBottomColor: "#CCC",
   },
 
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#EEE",
+  },
+
   modal: {
     alignSelf: "center",
   },
@@ -359,5 +376,27 @@ const styles = StyleSheet.create({
     textAlign: "right",
     padding: 5,
     borderRadius: 10,
+  },
+
+  scanButton: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+    backgroundColor: Color.BACKGROUND_COLOR,
+    borderRadius: 20,
+    marginTop: 20,
+    padding: 5,
+    alignSelf: "center",
+  },
+
+  scanButtonImage: {
+    width: 35,
+    height: 35,
+    margin: 5,
   },
 });

@@ -1,5 +1,6 @@
 import { ImageURISource } from 'react-native';
 import AppContent, { AppContentType } from './../interface/AppContent';
+import AppConfig from './AppConfig';
 export default class EnglishAppContent implements AppContent {
     SEARCH: string;
     MIME_TAB: string;
@@ -34,6 +35,9 @@ export default class EnglishAppContent implements AppContent {
     ANALYSIS: string;
     STOP: string;
     QR: string;
+    CAMERA_REQUEST: string;
+    LOADING:string;
+
 
     constructor() {
         this.TYPE = AppContentType.EN;
@@ -69,5 +73,7 @@ export default class EnglishAppContent implements AppContent {
         this.ANALYSIS = "Analyze project 📈";
         this.STOP = "Stop project 🚫";
         this.QR = "QR code";
+        this.CAMERA_REQUEST = AppConfig.APP_NAME + " needs camera permission";
+        this.LOADING = "Loading...";
     }
 }

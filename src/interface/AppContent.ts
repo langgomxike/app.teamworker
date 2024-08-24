@@ -40,4 +40,6 @@ export default interface AppContent {
     ANALYSIS: string;
     STOP: string;
     QR: string;
+    CAMERA_REQUEST: string;
+    LOADING:string;
 }

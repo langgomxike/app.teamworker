@@ -24,6 +24,7 @@ export default function ProjectDetailScreen() {
   //states
   const [project, setProject] = useState<Project>(new Project());
   const [showQR, setShowQR] = useState<boolean>(false);
+  const [showMembers, setShowMembers] = useState<boolean>(false);
 
   //handlers
   const getProject = useCallback((id: number) => {
@@ -51,6 +52,11 @@ export default function ProjectDetailScreen() {
     navigation?.navigate(ScreenName.ANALYSIS, data);
   }, []);
 
+  const goToEditScreen = useCallback(() => {
+    const data = {};
+    navigation?.navigate(ScreenName.CREATE_PROJECT, data);
+  }, []);
+
   const handleStopProject = useCallback(() => {
     alert("stop project");
   }, []);
@@ -64,6 +70,13 @@ export default function ProjectDetailScreen() {
 
   return (
     <StackLayout>
+      {/* edit */}
+      <ImageButton
+        src={require("../../../assets/icons/edit.png")}
+        onPress={goToEditScreen}
+        style={{ position: "absolute", marginTop: 50, right: 10 }}
+      />
+
       {/* header */}
       <View style={styles.headerContainer}>
         <Image style={styles.image} src={project.coverImage} />
@@ -79,6 +92,45 @@ export default function ProjectDetailScreen() {
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         >
+          {/* members */}
+          <ShadowCornerBox onPress={() => setShowQR(true)}>
+            <View style={styles.item}>
+              <Image
+                style={styles.itemImage}
+                source={require("../../../assets/icons/members.png")}
+              />
+              <Text style={styles.itemText}>
+                {appContentContext.content.QR}
+              </Text>
+
+              <ImageButton
+                style={styles.itemImage}
+                src={require("../../../assets/icons/invite.png")}
+                onPress={() => {}}
+              />
+
+              <ImageButton
+                style={styles.itemImage}
+                src={
+                  showMembers
+                    ? require("../../../assets/icons/up.png")
+                    : require("../../../assets/icons/down.png")
+                }
+                onPress={() => setShowMembers((prev) => !prev)}
+              />
+            </View>
+
+            {showMembers && (
+              <>
+                <Text>Mb1</Text>
+                <Text>Mb1</Text>
+                <Text>Mb1</Text>
+                <Text>Mb1</Text>
+                <Text>Mb1</Text>
+              </>
+            )}
+          </ShadowCornerBox>
+
           {/* qr code */}
           <ShadowCornerBox onPress={() => setShowQR(true)}>
             <View style={styles.item}>
@@ -135,14 +187,14 @@ export default function ProjectDetailScreen() {
 
       {/* qr modal */}
       <Modal transparent={true} visible={showQR} animationType="slide">
-        <View style={{ flex: 1, justifyContent: "center" }}>
-          <View style={styles.qrModel}>
+        <View style={styles.modalContainer}>
+          <View style={styles.qrModal}>
+            <ImageButton
+              src={require("../../../assets/icons/close.png")}
+              onPress={() => setShowQR(false)}
+              style={{ alignSelf: "flex-end" }}
+            />
             <ShadowCornerBox onPress={() => {}}>
-              <ImageButton
-                src={require("../../../assets/icons/close.png")}
-                onPress={() => setShowQR(false)}
-                style={{ alignSelf: "flex-end" }}
-              />
               <QRCode
                 value={JSON.stringify({
                   project_id: project.id,
@@ -200,8 +252,14 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  qrModel: {
+  qrModal: {
     alignSelf: "center",
-    padding: 30,
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Color.BACKGROUND_COLOR,
+    opacity: 0.8,
   },
 });

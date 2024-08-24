@@ -25,6 +25,8 @@ import ProgressReportDetailScreen from "./src/views/screens/ProgressReportDetail
 import EndTaskReportDetailScreen from "./src/views/screens/EndTaskReportDetail";
 import StorageScreen from "./src/views/screens/Storage";
 import AnalysisScreen from "./src/views/screens/Analysis";
+import QRScannerScreen from "./src/views/screens/QRScanner";
+import CreateProjectScreen from "./src/views/screens/CreateProject";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +54,11 @@ export default function App() {
           <Stack.Screen
             name={ScreenName.PROJECT_DETAIL}
             component={ProjectDetailScreen}
+          />
+
+          <Stack.Screen
+            name={ScreenName.CREATE_PROJECT}
+            component={CreateProjectScreen}
           />
 
           <Stack.Screen name={ScreenName.CREATE} component={CreateScreen} />
@@ -115,6 +122,11 @@ export default function App() {
           <Stack.Screen name={ScreenName.STORAGE} component={StorageScreen} />
 
           <Stack.Screen name={ScreenName.ANALYSIS} component={AnalysisScreen} />
+
+          <Stack.Screen
+            name={ScreenName.QR_SCANNER}
+            component={QRScannerScreen}
+          />
         </Stack.Navigator>
       </Context.AppContentContext.Provider>
     </NavigationContainer>

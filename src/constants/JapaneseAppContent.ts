@@ -1,5 +1,6 @@
 import { ImageURISource } from 'react-native';
 import AppContent, { AppContentType } from '../interface/AppContent';
+import AppConfig from './AppConfig';
 export default class JapaneseAppContent implements AppContent {
     SEARCH: string;
     MIME_TAB: string;
@@ -34,6 +35,9 @@ export default class JapaneseAppContent implements AppContent {
     ANALYSIS: string;
     STOP: string;
     QR: string;
+    CAMERA_REQUEST: string;
+    LOADING:string;
+
 
     constructor() {
         this.TYPE = AppContentType.JA;
@@ -69,5 +73,7 @@ export default class JapaneseAppContent implements AppContent {
         this.ANALYSIS = "プロジェクトを分析する 📈";
         this.STOP = "プロジェクトを停止します🚫";
         this.QR = "ＱＲコード";
+        this.CAMERA_REQUEST = AppConfig.APP_NAME = "にはカメラの許可が必要です";
+        this.LOADING = "読み込み中...";
     }
 }

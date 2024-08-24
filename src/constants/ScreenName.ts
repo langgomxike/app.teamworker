@@ -3,6 +3,7 @@ export default class ScreenName {
     static ACCOUNT = "ACCOUNT";
     static PROJECT = "PROJECT";
     static PROJECT_DETAIL = "PROJECT_DETAIL";
+    static CREATE_PROJECT = "CREATE_PROJECT";
     static CREATE = "CREATE";
     static CREATE_POLL = "CREATE_POLL";
     static CREATE_DISCUSSION = "CREATE_DISCUSSION";
@@ -20,4 +21,5 @@ export default class ScreenName {
     static PROGRESS_REPORT_DETAIL = "PROGRESS_REPORT_DETAIL";
     static END_TASK_REPORT_DETAIL = "END_TASK_REPORT_DETAIL";
     static REMINDER_DETAIL = "REMINDER_DETAIL";
+    static QR_SCANNER = "QR_SCANNER";
 }
