@@ -54,7 +54,7 @@ export default class EnglishAppContent implements AppContent {
         this.JUST_RECENT = "just recently";
         this.NO_ACTIVITY = "This project has no activity";
         this.CREATE_ACTIVITY = "Choose one item to create new activity for your team 😉";
-        this.CREATE_ACTIVITY_DISCUSSION = "Creating a new discussion will help for your team work more effectively 😉";
+        this.CREATE_ACTIVITY_DISCUSSION = "Creating a new discussion will help your team work more effectively 😉";
         this.CREATE_ACTIVITY_END_TASK_REPORT = "Hey leader! I completed my task 😊";
         this.CREATE_ACTIVITY_ERROR_REPORT = "I found an error 😟";
         this.CREATE_ACTIVITY_PROGRESS_REPORT = "What did I do yesterday 🧐";

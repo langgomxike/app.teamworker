@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import Context from "./Context";
-
 export default class AppConfig {
     static APP_NAME = "TEAM WORKER";
 

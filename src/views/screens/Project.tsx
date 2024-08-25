@@ -1,4 +1,12 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import StackWithAccountLayout from "../layouts/StackWithAccountLayout";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
@@ -153,11 +161,12 @@ export default function ProjectScreen() {
         )}
       />
 
-      <ImageButton
-        src={require("../../../assets/icons/plus.png")}
-        onPress={goToCreateScreen}
-        style={styles.createButton}
-      />
+      <Pressable style={[styles.createButton]} onPress={goToCreateScreen}>
+        <Image
+          source={require("../../../assets/icons/create.png")}
+          style={styles.createButton}
+        />
+      </Pressable>
     </StackWithAccountLayout>
   );
 }
@@ -165,7 +174,10 @@ export default function ProjectScreen() {
 const styles = StyleSheet.create({
   createButton: {
     right: 10,
-    alignSelf: "flex-end",
+    bottom: 10,
+    width: 50,
+    height: 50,
+    position: "absolute",
   },
 
   actionContainer: {

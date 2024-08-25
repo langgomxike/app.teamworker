@@ -73,7 +73,7 @@ export default function CreateScreen() {
       onPressDetail={() => {}}
       title={appContentContext.content.CREATE_ACTIVITY}
     >
-      <SubCornerContainer>
+      <View>
         <ScrollView
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
@@ -89,7 +89,7 @@ export default function CreateScreen() {
             ))}
           </View>
         </ScrollView>
-      </SubCornerContainer>
+      </View>
     </StackWithAccountLayout>
   );
 }
