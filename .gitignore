@@ -36,3 +36,6 @@ yarn-error.*
 
 # firebase
 *-account-service.json
+
+# module
+android
