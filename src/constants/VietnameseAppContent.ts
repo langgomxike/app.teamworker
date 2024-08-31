@@ -37,6 +37,7 @@ export default class VietnameseAppContent implements AppContent {
     QR: string;
     CAMERA_REQUEST: string;
     LOADING:string;
+    LOGIN: string;
 
     constructor() {
         this.TYPE = AppContentType.VN;
@@ -74,6 +75,7 @@ export default class VietnameseAppContent implements AppContent {
         this.QR = "Mã QR";
         this.CAMERA_REQUEST = AppConfig.APP_NAME + " cần quyền truy cập vào máy ảnh";
         this.LOADING = "Đang tải...";
+        this.LOGIN = "Đăng nhập";
     }
 
 }

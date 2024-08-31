@@ -37,6 +37,7 @@ export default class JapaneseAppContent implements AppContent {
     QR: string;
     CAMERA_REQUEST: string;
     LOADING:string;
+    LOGIN: string;
 
 
     constructor() {
@@ -75,5 +76,6 @@ export default class JapaneseAppContent implements AppContent {
         this.QR = "ＱＲコード";
         this.CAMERA_REQUEST = AppConfig.APP_NAME = "にはカメラの許可が必要です";
         this.LOADING = "読み込み中...";
+        this.LOGIN = "ログイン";
     }
 }

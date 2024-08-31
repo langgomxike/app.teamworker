@@ -22,7 +22,6 @@ import Context from "../../constants/Context";
 import { NavigationContext } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
 import ShadowCornerBox from "../components/ShadowCornerBox";
-import SFirebase from "../../services/SFirebase";
 
 enum Tab {
   MINE,

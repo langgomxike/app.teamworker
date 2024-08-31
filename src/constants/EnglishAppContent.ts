@@ -37,6 +37,7 @@ export default class EnglishAppContent implements AppContent {
     QR: string;
     CAMERA_REQUEST: string;
     LOADING:string;
+    LOGIN: string;
 
 
     constructor() {
@@ -75,5 +76,6 @@ export default class EnglishAppContent implements AppContent {
         this.QR = "QR code";
         this.CAMERA_REQUEST = AppConfig.APP_NAME + " needs camera permission";
         this.LOADING = "Loading...";
+        this.LOGIN = "Login";
     }
 }

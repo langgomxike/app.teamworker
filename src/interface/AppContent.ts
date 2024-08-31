@@ -42,4 +42,5 @@ export default interface AppContent {
     QR: string;
     CAMERA_REQUEST: string;
     LOADING:string;
+    LOGIN:string;
 }

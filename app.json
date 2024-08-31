@@ -12,7 +12,14 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": ["com.googleusercontent.apps.788731490896-peoqkkvkdk6m3f32i0k92qsofckp436j"]
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -52,7 +59,7 @@
       [
         "@react-native-google-signin/google-signin",
         {
-          "iosUrlScheme": "com.googleusercontent.apps._some_id_here_"
+          "iosUrlScheme": "com.googleusercontent.apps.788731490896-peoqkkvkdk6m3f32i0k92qsofckp436j"
         }
       ]
     ]

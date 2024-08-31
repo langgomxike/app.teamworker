@@ -3,25 +3,53 @@ import Color from "./../../constants/Color";
 import { useCallback, useContext } from "react";
 import { NavigationContext } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
+import Context from "../../constants/Context";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 export default function FloatAccount() {
   //refs, contexts
   const navigation = useContext(NavigationContext);
+  const appContentContext = useContext(Context.AppContentContext);
 
   //handlers
   const goToAccountScreen = useCallback(() => {
     navigation?.navigate(ScreenName.ACCOUNT);
   }, []);
+
+  const handleLogin = useCallback(() => {
+    GoogleSignin.configure();
+
+    // GoogleSignin.signIn();
+
+  }, []);
+
   return (
-    <Pressable onPress={goToAccountScreen} style={styles.container}>
+    <Pressable
+      onPress={false ? goToAccountScreen : handleLogin}
+      style={styles.container}
+    >
       <View style={{ alignSelf: "center" }}>
-        <Text style={styles.name}>John Smith</Text>
-        <Text style={styles.email}>{"jonh@gmail.com"}</Text>
+        {false ? (
+          <>
+            <Text style={styles.name}>John Smith</Text>
+            <Text style={styles.email}>{"jonh@gmail.com"}</Text>
+          </>
+        ) : (
+          <Text style={styles.name}>{appContentContext.content.LOGIN}</Text>
+        )}
       </View>
-      <Image
-        style={styles.avatar}
-        src={"https://cdn-icons-png.flaticon.com/128/13727/13727505.png"}
-      />
+
+      {false ? (
+        <Image
+          style={styles.avatar}
+          src={"https://cdn-icons-png.flaticon.com/128/13727/13727505.png"}
+        />
+      ) : (
+        <Image
+          style={styles.avatar}
+          source={true && require("../../../assets/icons/google.png")}
+        />
+      )}
     </Pressable>
   );
 }
