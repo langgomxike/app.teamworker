@@ -4,7 +4,6 @@ import { useCallback, useContext } from "react";
 import { NavigationContext } from "@react-navigation/native";
 import ScreenName from "../../constants/ScreenName";
 import Context from "../../constants/Context";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 export default function FloatAccount() {
   //refs, contexts
@@ -16,16 +15,11 @@ export default function FloatAccount() {
     navigation?.navigate(ScreenName.ACCOUNT);
   }, []);
 
-  const handleLogin = useCallback(() => {
-    GoogleSignin.configure();
-
-    // GoogleSignin.signIn();
-
-  }, []);
+  const handleLogin = useCallback(() => {}, []);
 
   return (
     <Pressable
-      onPress={false ? goToAccountScreen : handleLogin}
+      onPress={goToAccountScreen}
       style={styles.container}
     >
       <View style={{ alignSelf: "center" }}>

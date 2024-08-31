@@ -123,7 +123,7 @@ export default function HomeScreen() {
           {/* app name */}
           <View>
             <Image source={require("../../../assets/favicon.png")} />
-            <Text style={styles.appName}>{AppConfig.APP_NAME}</Text>
+            <Text style={styles.appName}>{"TEAMWORKER"}</Text>
           </View>
 
           {/* float account */}
